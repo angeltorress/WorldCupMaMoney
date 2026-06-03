@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Quiniela Mundial 2026 ⚽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e1a;--bg2:#111729;--panel:#161d33;--panel2:#1d2742;--line:#28324f;
+  --txt:#eaf0ff;--txt2:#8b97b8;--gold:#f5c542;--gold2:#c99a1e;
+  --silver:#c8d2e8;--silver2:#8c98b4;--green:#22c55e;--green2:#15803d;
+  --red:#ef4444;--accent:#3b82f6;--r:16px;--r2:12px;
+  --shadow:0 8px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%,rgba(59,130,246,.10),transparent 60%),
+    radial-gradient(900px 500px at -10% 20%,rgba(245,197,66,.07),transparent 55%),
+    var(--bg);
+  color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:78px;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.hide{display:none!important}
+
+/* ── SCREENS ── */
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:28px}
+.brand{text-align:center;margin-bottom:22px}
+.brand .ball{font-size:46px;line-height:1}
+.brand h1{font-size:26px;margin-top:8px;font-family:'Archivo Black';background:linear-gradient(90deg,var(--gold),#fff 60%,var(--silver));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand p{color:var(--txt2);font-size:13px;margin-top:4px;font-weight:500}
+label{display:block;font-size:12px;font-weight:600;color:var(--txt2);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.06em}
+input{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:14px 16px;color:var(--txt);font-size:16px;font-weight:500;transition:.15s}
+input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+.pin-input{letter-spacing:.6em;text-align:center;font-size:22px;font-weight:700}
+.btn{width:100%;padding:15px;border-radius:var(--r2);font-weight:700;font-size:15px;background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;margin-top:18px;transition:.15s;box-shadow:0 6px 18px rgba(59,130,246,.35)}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn-ghost{background:var(--panel2);box-shadow:none;border:1px solid var(--line);color:var(--txt)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#3a2c00;box-shadow:0 6px 18px rgba(245,197,66,.3)}
+.btn-sm{width:auto;padding:9px 14px;font-size:13px;margin-top:0}
+.muted{color:var(--txt2);font-size:12.5px;text-align:center;margin-top:16px;line-height:1.5}
+.err{color:var(--red);font-size:13px;font-weight:600;text-align:center;margin-top:12px;min-height:18px}
+.linkbtn{color:var(--accent);font-weight:700;background:none;font-size:13px;text-decoration:underline}
+
+/* ── TOPBAR ── */
+#app{max-width:680px;margin:0 auto;padding:0 0 12px}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(10,14,26,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.topbar .logo{font-family:'Archivo Black';font-size:17px;display:flex;align-items:center;gap:7px}
+.topbar .spacer{flex:1}
+.chip{font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.chip.me{background:linear-gradient(135deg,rgba(245,197,66,.18),rgba(59,130,246,.18));border-color:var(--gold2)}
+.iconbtn{width:38px;height:38px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:17px}
+
+/* ── NOTIFY ── */
+.notify{margin:10px 16px 0;padding:11px 14px;border-radius:var(--r2);background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(34,197,94,.12));border:1px solid var(--accent);font-size:13px;font-weight:600;display:flex;align-items:center;gap:9px;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.notify .x{margin-left:auto;font-size:18px;color:var(--txt2);padding:0 4px}
+
+/* ── PANELS ── */
+.panel{padding:14px 16px;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sectiontitle{font-family:'Archivo Black';font-size:20px;margin:4px 0 2px}
+.sectionsub{color:var(--txt2);font-size:13px;margin-bottom:14px}
+
+/* ── PROGRESS ── */
+.progwrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:16px}
+.progtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.progtop b{font-family:'Archivo Black';font-size:22px}
+.progtop span{color:var(--txt2);font-size:13px;font-weight:600}
+.progbar{height:8px;background:var(--bg2);border-radius:999px;overflow:hidden;margin-bottom:14px}
+.progfill{height:100%;background:linear-gradient(90deg,var(--gold),var(--green));border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.gdots{display:flex;flex-wrap:wrap;gap:8px}
+.gdot{width:34px;height:34px;border-radius:10px;background:var(--bg2);border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--txt2);display:flex;align-items:center;justify-content:center;transition:.18s}
+.gdot.done{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(34,197,94,.35)}
+.gdot.active{outline:2px solid var(--accent);outline-offset:2px}
+.complete-banner{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-radius:var(--r);padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(34,197,94,.4);animation:pop .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
+.complete-banner .big{font-size:30px}
+.complete-banner b{display:block;font-family:'Archivo Black';font-size:16px}
+.complete-banner small{opacity:.92;font-size:12.5px;font-weight:500}
+.lockbanner{background:rgba(239,68,68,.12);border:1px solid var(--red);color:#ffb4b4;border-radius:var(--r2);padding:12px 14px;font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+/* ── GROUP CARD ── */
+.group{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:14px;overflow:hidden}
+.ghead{padding:13px 16px;display:flex;align-items:center;gap:10px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.glabel{font-family:'Archivo Black';font-size:15px;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gstatus{margin-left:auto;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px}
+.gstatus.ok{background:rgba(34,197,94,.18);color:#7ee9a4}
+.gstatus.pend{background:rgba(139,151,184,.15);color:var(--txt2)}
+.team{display:flex;align-items:center;gap:11px;padding:11px 16px;border-bottom:1px solid var(--line)}
+.team:last-child{border-bottom:none}
+.flag-em{font-size:26px;line-height:1;width:34px;text-align:center;flex-shrink:0}
+.tname{font-weight:600;font-size:14.5px;flex:1;line-height:1.2}
+.picks{display:flex;gap:6px}
+.pickbtn{width:38px;height:38px;border-radius:10px;font-weight:800;font-size:13px;background:var(--bg2);border:1.5px solid var(--line);color:var(--txt2);transition:.15s;display:flex;align-items:center;justify-content:center}
+.pickbtn:active{transform:scale(.9)}
+.pickbtn.first.on{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#3a2c00;border-color:var(--gold);box-shadow:0 3px 12px rgba(245,197,66,.4)}
+.pickbtn.second.on{background:linear-gradient(135deg,var(--silver),var(--silver2));color:#1a2238;border-color:var(--silver);box-shadow:0 3px 12px rgba(200,210,232,.3)}
+.pickbtn.disabled{opacity:.4;pointer-events:none}
+.team.res-correct{background:rgba(34,197,94,.07)}
+.resbadge{font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px;margin-left:2px}
+.resbadge.gold{background:var(--gold);color:#3a2c00}
+.resbadge.silver{background:var(--silver);color:#1a2238}
+
+/* ── PEOPLE ── */
+.playercard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.phead{padding:13px 16px;display:flex;align-items:center;gap:11px;cursor:pointer}
+.avatar{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.pinfo b{font-size:15px;display:block}
+.pinfo small{color:var(--txt2);font-size:12px;font-weight:500}
+.ptscore{font-family:'Archivo Black';font-size:20px;color:var(--gold)}
+.caret{color:var(--txt2);font-size:13px;transition:.2s}
+.caret.open{transform:rotate(180deg)}
+.pbody{padding:0 16px 14px;display:none}
+.pbody.open{display:block}
+.minigroup{font-size:13px;padding:7px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.minigroup .gl{font-weight:800;color:var(--txt2);width:22px}
+.minipick{display:flex;align-items:center;gap:4px;font-size:13px}
+.mini-em{font-size:18px;line-height:1}
+
+/* ── SCOREBOARD ── */
+.podium{display:flex;gap:8px;align-items:flex-end;margin-bottom:18px}
+.pod{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 8px;text-align:center}
+.pod .medal{font-size:26px}
+.pod .nm{font-weight:700;font-size:13px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pod .pts{font-family:'Archivo Black';font-size:18px;margin-top:3px}
+.pod.p1{background:linear-gradient(135deg,rgba(245,197,66,.2),var(--panel));border-color:var(--gold2);transform:translateY(-6px)}
+.pod.p1 .pts{color:var(--gold)}
+.pod.p2 .pts{color:var(--silver)}
+.pod.p3 .pts{color:#cd7f32}
+.rankrow{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r2);margin-bottom:8px}
+.rankrow .pos{font-family:'Archivo Black';font-size:16px;color:var(--txt2);width:26px;text-align:center}
+.rankrow .nm{flex:1;font-weight:600;font-size:14px}
+.rankrow .barwrap{flex:2;height:7px;background:var(--bg2);border-radius:999px;overflow:hidden;max-width:100px}
+.rankrow .bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:999px;transition:width .4s}
+.rankrow .pt{font-family:'Archivo Black';font-size:16px;color:var(--gold);width:38px;text-align:right}
+.rankrow.me{border-color:var(--gold2);background:linear-gradient(135deg,rgba(245,197,66,.1),var(--panel))}
+
+/* ── BREAKDOWN ── */
+.breakdown{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.breakdown h4{font-family:'Archivo Black';font-size:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.breakdown h4 span{font-family:'Outfit';font-size:13px;color:var(--txt2);font-weight:600}
+.bkgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:14px}
+.bkcell{border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;transition:.15s;border:1.5px solid transparent}
+.bkcell .gl{font-family:'Archivo Black';font-size:13px}
+.bkcell .bkpts{font-size:11px;font-weight:700;margin-top:2px}
+.bkcell.pending{background:var(--bg2);border-color:var(--line);color:var(--txt2)}
+.bkcell.exact{background:rgba(34,197,94,.18);border-color:var(--green2);color:#7ee9a4}
+.bkcell.partial{background:rgba(245,197,66,.15);border-color:var(--gold2);color:var(--gold)}
+.bkcell.miss{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4);color:#ffb4b4}
+.bkcell.nopick{background:var(--bg2);border-color:var(--line);color:var(--txt2);opacity:.5}
+.bkdetail{display:flex;flex-direction:column;gap:6px}
+.bkrow{background:var(--bg2);border-radius:var(--r2);padding:10px 13px;font-size:13px;display:flex;align-items:center;gap:8px}
+.bkrow .bglabel{font-family:'Archivo Black';font-size:12px;color:var(--txt2);width:24px}
+.bkrow .picks-detail{flex:1;display:flex;flex-wrap:wrap;gap:8px}
+.bkrow .pick-item{display:flex;align-items:center;gap:4px}
+.bkrow .pick-ico{font-size:12px}
+.bkrow .result-pts{font-family:'Archivo Black';font-size:14px;margin-left:auto}
+.pts-exact{color:var(--green)}
+.pts-partial{color:var(--gold)}
+.pts-miss{color:var(--txt2)}
+.pts-pending{color:var(--txt2)}
+.score-header{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.score-header .prog-text{font-size:13px;color:var(--txt2);font-weight:600}
+.score-header .prog-text b{color:var(--txt);display:block;font-size:15px}
+
+/* ── STATS ── */
+.statcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.statcard h4{font-family:'Archivo Black';font-size:14px;margin-bottom:12px;color:var(--gold)}
+.statrow{margin-bottom:10px}
+.statrow:last-child{margin-bottom:0}
+.statrow .tl{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;margin-bottom:5px}
+.statrow .tl .group-tag{font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px;background:var(--bg2);color:var(--txt2);margin-left:2px}
+.statrow .tl .pct{margin-left:auto;color:var(--txt2);font-weight:700;font-size:12px;white-space:nowrap}
+.sbar{height:18px;background:var(--bg2);border-radius:7px;overflow:hidden;display:flex}
+.sbar .seg1{background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s}
+.sbar .seg2{background:linear-gradient(90deg,var(--silver2),var(--silver));transition:width .5s}
+.statlegend{display:flex;gap:16px;font-size:11px;color:var(--txt2);font-weight:600;margin-bottom:14px}
+.statlegend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:4px;vertical-align:-1px}
+.stat-em{font-size:20px;line-height:1}
+
+/* ── RULES ── */
+.rulecard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px}
+.rulecard h4{font-family:'Archivo Black';font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.rulecard p,.rulecard li{font-size:14px;line-height:1.65;color:#c3cce6}
+.rulecard ul{padding-left:20px;margin-top:6px}
+.rulecard li{margin-bottom:5px}
+.ptbox{display:flex;gap:10px;margin-top:10px}
+.ptbox .pb{flex:1;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:12px;text-align:center}
+.ptbox .pb .n{font-family:'Archivo Black';font-size:24px;color:var(--gold)}
+.ptbox .pb small{font-size:11px;color:var(--txt2);font-weight:600}
+
+/* ── ADMIN ── */
+.adminbox{background:rgba(239,68,68,.06);border:1px solid var(--red);border-radius:var(--r);padding:14px 16px;margin-bottom:16px}
+.adminbox h4{font-size:13px;color:#ff9b9b;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.adminrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.toggle{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600}
+.switch{width:48px;height:27px;background:var(--bg2);border-radius:999px;border:1px solid var(--line);position:relative;transition:.2s;flex-shrink:0;cursor:pointer}
+.switch.on{background:var(--green)}
+.switch::after{content:"";position:absolute;width:21px;height:21px;border-radius:50%;background:#fff;top:2px;left:2px;transition:.2s}
+.switch.on::after{left:24px}
+
+/* ── NAV ── */
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(10,14,26,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;padding:6px 4px 8px;max-width:680px;margin:0 auto}
+.navbtn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;color:var(--txt2);font-size:9.5px;font-weight:700;position:relative;transition:.15s}
+.navbtn .ic{font-size:21px;line-height:1}
+.navbtn.on{color:var(--gold)}
+.navbtn.on .ic{filter:drop-shadow(0 2px 6px rgba(245,197,66,.5))}
+.navbtn .ndot{position:absolute;top:2px;right:50%;margin-right:-18px;width:8px;height:8px;background:var(--red);border-radius:50%;border:2px solid var(--bg)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(20px);z-index:100;opacity:0;transition:.25s;pointer-events:none;width:max-content;max-width:90vw}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toastinner{background:var(--panel2);border:1px solid var(--gold2);border-radius:999px;padding:11px 20px;font-size:13.5px;font-weight:700;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px}
+.spin{display:inline-block;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+</style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="authScreen" class="screen">
+  <div class="card">
+    <div class="brand"><div class="ball">⚽</div><h1>QUINIELA 2026</h1><p>Mundial USA · Canadá · México</p></div>
+    <label>Tu nombre</label>
+    <input id="authName" type="text" placeholder="Ej. Carlos" maxlength="20" autocomplete="off">
+    <label>PIN de 4 dígitos</label>
+    <input id="authPin" class="pin-input" type="tel" inputmode="numeric" maxlength="4" placeholder="••••">
+    <button class="btn" id="authBtn">Entrar / Registrarme</button>
+    <div class="err" id="authErr"></div>
+    <p class="muted">Si tu nombre ya existe usa tu PIN. Si es nuevo queda registrado al instante.</p>
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div id="app" class="hide">
+  <div class="topbar">
+    <div class="logo">⚽ 2026</div>
+    <div class="spacer"></div>
+    <div class="chip me">👤 <span id="meName">—</span></div>
+    <button class="iconbtn" id="syncBtn" title="Sincronizar">🔄</button>
+  </div>
+  <div id="notifyHost"></div>
+  <div class="panel" id="picksPanel"></div>
+  <div class="panel hide" id="peoplePanel"></div>
+  <div class="panel hide" id="scorePanel"></div>
+  <div class="panel hide" id="statsPanel"></div>
+  <div class="panel hide" id="rulesPanel"></div>
+</div>
+
+<div class="nav hide" id="nav">
+  <button class="navbtn on" data-tab="picks"><span class="ic">🗳️</span>Picks</button>
+  <button class="navbtn" data-tab="people"><span class="ic">👥</span>Todos</button>
+  <button class="navbtn" data-tab="score"><span class="ic">🏆</span>Marcador</button>
+  <button class="navbtn" data-tab="stats"><span class="ic">📊</span>Stats</button>
+  <button class="navbtn" data-tab="rules"><span class="ic">📖</span>Reglas</button>
+</div>
+
+<div id="toast"><div class="toastinner" id="toastInner"></div></div>
+
+<script>
+/* ══════════════════════════════════════════
+   CONFIG — BIN ÚNICO Y FIJO. NUNCA crear bins nuevos.
+══════════════════════════════════════════ */
+const BIN_ID     = "6a20a961da38895dfe837022";
+const ACCESS_KEY = "$2a$10$3MvdvzzkcghvRe/oQIZ8juVHQQhhdRCE0isOnZweBe5/EOKYaJV4C";
+const BIN_URL    = "https://api.jsonbin.io/v3/b/" + BIN_ID;
+const ADMIN_PASS = "admin2026";
+const LS_KEY     = "quiniela2026_db";
+const SS_USER    = "quiniela2026_user";
+const POLL_MS    = 30000;
+
+/* ══════════════════════════════════════════
+   GRUPOS OFICIALES MUNDIAL 2026
+══════════════════════════════════════════ */
+const GROUPS = {
+  A:[["mx","México"],      ["za","Sudáfrica"],       ["kr","Corea del Sur"], ["cz","Chequia"]],
+  B:[["ca","Canadá"],      ["ba","Bosnia y Herz."],  ["qa","Qatar"],         ["ch","Suiza"]],
+  C:[["br","Brasil"],      ["ma","Marruecos"],        ["ht","Haití"],         ["gb-sct","Escocia"]],
+  D:[["us","EE.UU."],      ["py","Paraguay"],         ["au","Australia"],     ["tr","Turquía"]],
+  E:[["de","Alemania"],    ["cw","Curazao"],           ["ci","Costa de Marfil"],["ec","Ecuador"]],
+  F:[["nl","P. Bajos"],    ["jp","Japón"],             ["se","Suecia"],        ["tn","Túnez"]],
+  G:[["be","Bélgica"],     ["eg","Egipto"],            ["ir","Irán"],          ["nz","N. Zelanda"]],
+  H:[["es","España"],      ["cv","Cabo Verde"],        ["sa","Arabia Saudí"],  ["uy","Uruguay"]],
+  I:[["fr","Francia"],     ["sn","Senegal"],           ["iq","Irak"],          ["no","Noruega"]],
+  J:[["ar","Argentina"],   ["dz","Argelia"],           ["at","Austria"],       ["jo","Jordania"]],
+  K:[["pt","Portugal"],    ["cd","RD Congo"],          ["uz","Uzbekistán"],    ["co","Colombia"]],
+  L:[["gb-eng","Inglaterra"],["hr","Croacia"],         ["gh","Ghana"],         ["pa","Panamá"]]
+};
+const GKEYS = Object.keys(GROUPS);
+
+/* ── FLAG EMOJI ── */
+function flagEmoji(code){
+  const sp={"gb-sct":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","gb-eng":"🏴󠁧󠁢󠁥󠁮󠁧󠁿"};
+  if(sp[code]) return sp[code];
+  return code.toUpperCase().split("").map(c=>String.fromCodePoint(0x1F1E6+c.charCodeAt(0)-65)).join("");
+}
+
+/* ══════════════════════════════════════════
+   STATE
+══════════════════════════════════════════ */
+let DB=null, ME=null, activeTab="picks";
+let lastSeenVoteSig="", usingLocal=false, polling=null;
+const $=id=>document.getElementById(id);
+
+/* ══════════════════════════════════════════
+   CRYPTO
+══════════════════════════════════════════ */
+async function sha256(s){
+  const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+
+/* ══════════════════════════════════════════
+   DB HELPERS
+══════════════════════════════════════════ */
+function emptyDB(){return{players:[],votes:{},results:{grupos:{}},phaseLocks:{grupos:false},messages:[]}}
+function normalizeDB(d){
+  d=d||{};
+  d.players=Array.isArray(d.players)?d.players:[];
+  d.votes=d.votes&&typeof d.votes==="object"?d.votes:{};
+  d.results=d.results&&typeof d.results==="object"?d.results:{grupos:{}};
+  d.results.grupos=d.results.grupos||{};
+  d.phaseLocks=d.phaseLocks&&typeof d.phaseLocks==="object"?d.phaseLocks:{grupos:false};
+  if(typeof d.phaseLocks.grupos!=="boolean")d.phaseLocks.grupos=false;
+  d.messages=Array.isArray(d.messages)?d.messages:[];
+  return d;
+}
+
+/* ══════════════════════════════════════════
+   PERSISTENCIA — bin único + localStorage fallback
+   NUNCA crea bins nuevos (solo GET latest + PUT)
+══════════════════════════════════════════ */
+async function loadDB(){
+  try{
+    const r=await fetch(BIN_URL+"/latest",{headers:{"X-Bin-Meta":"false"}});
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    const data=await r.json();
+    usingLocal=false;
+    return normalizeDB((data&&data.record!==undefined)?data.record:data);
+  }catch(e){
+    console.warn("Bin no disponible:",e.message);
+    usingLocal=true;
+    try{const raw=localStorage.getItem(LS_KEY);if(raw)return normalizeDB(JSON.parse(raw));}catch(_){}
+    return emptyDB();
+  }
+}
+let saveQueue=Promise.resolve();
+async function saveDB(){
+  try{localStorage.setItem(LS_KEY,JSON.stringify(DB));}catch(_){}
+  saveQueue=saveQueue.then(async()=>{
+    try{
+      const r=await fetch(BIN_URL,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json","X-Access-Key":ACCESS_KEY},
+        body:JSON.stringify(DB)
+      });
+      if(!r.ok)throw new Error("HTTP "+r.status);
+      usingLocal=false;
+    }catch(e){console.warn("Save failed (local only):",e.message);usingLocal=true;}
+  });
+  return saveQueue;
+}
+
+/* ══════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════ */
+let toastTimer=null;
+function toast(msg){
+  $("toastInner").innerHTML=msg;
+  $("toast").classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>$("toast").classList.remove("show"),2200);
+}
+
+/* ══════════════════════════════════════════
+   AUTH
+══════════════════════════════════════════ */
+async function bootAuth(){
+  DB=await loadDB();
+  const saved=sessionStorage.getItem(SS_USER);
+  if(saved){
+    const p=DB.players.find(x=>x.name===saved);
+    if(p){ME={name:saved,isAdmin:false};enterApp();return;}
+  }
+  $("authScreen").classList.remove("hide");
+}
+
+$("authBtn").onclick=async()=>{
+  const name=$("authName").value.trim();
+  const pin=$("authPin").value.trim();
+  const err=$("authErr");err.textContent="";
+  if(name.length<2){err.textContent="Nombre demasiado corto.";return;}
+  if(!/^\d{4}$/.test(pin)){err.textContent="El PIN debe ser de 4 dígitos.";return;}
+  $("authBtn").innerHTML='<span class="spin">⏳</span> Conectando…';
+  DB=await loadDB();
+  const hash=await sha256(pin);
+  const existing=DB.players.find(p=>p.name.toLowerCase()===name.toLowerCase());
+  if(existing){
+    if(existing.pinHash!==hash){err.textContent="PIN incorrecto.";$("authBtn").innerHTML="Entrar / Registrarme";return;}
+    ME={name:existing.name,isAdmin:false};
+  }else{
+    DB.players.push({name,pinHash:hash});
+    if(!DB.votes[name])DB.votes[name]={grupos:{}};
+    DB.messages.push({id:genId(),player:"Sistema",text:`🎉 ${name} se unió a la quiniela`,ts:Date.now(),type:"system"});
+    await saveDB();
+    ME={name,isAdmin:false};
+  }
+  sessionStorage.setItem(SS_USER,ME.name);
+  enterApp();
+};
+
+function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+
+/* ══════════════════════════════════════════
+   ENTER APP
+══════════════════════════════════════════ */
+function enterApp(){
+  $("authScreen").classList.add("hide");
+  $("app").classList.remove("hide");
+  $("nav").classList.remove("hide");
+  $("meName").textContent=ME.name;
+  if(!DB.votes[ME.name])DB.votes[ME.name]={grupos:{}};
+  lastSeenVoteSig=voteSignature();
+  renderAll();
+  startPolling();
+}
+
+/* ══════════════════════════════════════════
+   NAV / TABS
+══════════════════════════════════════════ */
+document.querySelectorAll(".navbtn").forEach(b=>{b.onclick=()=>switchTab(b.dataset.tab);});
+function switchTab(tab){
+  activeTab=tab;
+  document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("on",b.dataset.tab===tab));
+  ["picks","people","score","stats","rules"].forEach(t=>{
+    $(t+"Panel").classList.toggle("hide",t!==tab);
+  });
+  if(tab==="people"){lastSeenVoteSig=voteSignature();renderNavDots();}
+}
+
+/* ══════════════════════════════════════════
+   RENDER ALL
+══════════════════════════════════════════ */
+function renderAll(){
+  renderPicks();renderPeople();renderScore();renderStats();renderRules();
+  renderNavDots();renderNotify();
+}
+
+/* ── HELPERS ── */
+function myVotes(){return(DB.votes[ME.name]&&DB.votes[ME.name].grupos)||{};}
+function groupComplete(v){return v&&v.first&&v.second&&v.first!==v.second;}
+function completedCount(votes){return GKEYS.filter(g=>groupComplete(votes[g])).length;}
+function isLocked(){return!!DB.phaseLocks.grupos;}
+function teamCode(g,name){const t=GROUPS[g].find(x=>x[1]===name);return t?t[0]:"";}
+
+/* ══════════════════════════════════════════
+   PICKS PANEL
+══════════════════════════════════════════ */
+function renderPicks(){
+  const v=myVotes(), done=completedCount(v), locked=isLocked();
+  let h="";
+
+  if(ME.isAdmin){
+    h+=`<div class="adminbox">
+      <h4>🛠️ Panel admin</h4>
+      <div class="adminrow" style="justify-content:space-between">
+        <div class="toggle">
+          <div class="switch ${locked?"on":""}" id="lockSwitch"></div>
+          <span>${locked?"Votación CERRADA":"Votación ABIERTA"}</span>
+        </div>
+        <button class="btn btn-sm btn-ghost" id="adminResultsBtn">Resultados oficiales →</button>
+      </div>
+    </div>`;
+  }
+
+  h+=`<div class="progwrap">
+    <div class="progtop"><b>${done}/12</b><span>grupos completos</span></div>
+    <div class="progbar"><div class="progfill" style="width:${done/12*100}%"></div></div>
+    <div class="gdots">`;
+  GKEYS.forEach(g=>{
+    const c=groupComplete(v[g])?"done":"";
+    h+=`<button class="gdot ${c}" data-go="${g}">${g}</button>`;
+  });
+  h+=`</div></div>`;
+
+  if(done===12){
+    h+=`<div class="complete-banner"><span class="big">✅</span>
+      <div><b>¡Quiniela completa!</b><small>Pronosticaste los 24 clasificados 🍀</small></div>
+    </div>`;
+  }
+  if(locked) h+=`<div class="lockbanner">🔒 Votación cerrada. Estos son tus picks finales.</div>`;
+
+  const res=DB.results.grupos;
+  GKEYS.forEach(g=>{
+    const gv=v[g]||{}, gres=res[g]||{};
+    h+=`<div class="group" id="grp-${g}">
+      <div class="ghead">
+        <span class="glabel">GRUPO ${g}</span>
+        <span class="gstatus ${groupComplete(gv)?"ok":"pend"}">${groupComplete(gv)?"✓ Listo":"Pendiente"}</span>
+      </div>`;
+    GROUPS[g].forEach(([code,name])=>{
+      const isFirst=gv.first===name, isSecond=gv.second===name;
+      let resBadge="", rowCls="";
+      if(gres.first||gres.second){
+        if(gres.first===name) resBadge=`<span class="resbadge gold">1° OFICIAL</span>`;
+        else if(gres.second===name) resBadge=`<span class="resbadge silver">2° OFICIAL</span>`;
+        if((isFirst&&gres.first===name)||(isSecond&&gres.second===name)) rowCls="res-correct";
+      }
+      const dis=locked?"disabled":"";
+      h+=`<div class="team ${rowCls}">
+        <span class="flag-em">${flagEmoji(code)}</span>
+        <span class="tname">${name}${resBadge}</span>
+        <div class="picks">
+          <button class="pickbtn first ${isFirst?"on":""} ${dis}" data-g="${g}" data-pos="first" data-team="${name}">1º</button>
+          <button class="pickbtn second ${isSecond?"on":""} ${dis}" data-g="${g}" data-pos="second" data-team="${name}">2º</button>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  });
+
+  $("picksPanel").innerHTML=`<div class="sectiontitle">🗳️ Tus pronósticos</div>
+    <div class="sectionsub">1.º dorado · 2.º plateado · por cada grupo</div>`+h;
+
+  $("picksPanel").querySelectorAll(".gdot").forEach(d=>{
+    d.onclick=()=>{
+      $("grp-"+d.dataset.go).scrollIntoView({behavior:"smooth",block:"center"});
+      $("picksPanel").querySelectorAll(".gdot").forEach(x=>x.classList.remove("active"));
+      d.classList.add("active");
+    };
+  });
+  $("picksPanel").querySelectorAll(".pickbtn:not(.disabled)").forEach(b=>{
+    b.onclick=()=>pick(b.dataset.g,b.dataset.pos,b.dataset.team);
+  });
+  if(ME.isAdmin){
+    $("lockSwitch").onclick=async()=>{
+      DB.phaseLocks.grupos=!DB.phaseLocks.grupos;
+      const txt=DB.phaseLocks.grupos?"🔒 Votación cerrada por admin":"🔓 Votación reabierta por admin";
+      DB.messages.push({id:genId(),player:"Sistema",text:txt,ts:Date.now(),type:"system"});
+      await saveDB();renderAll();
+      toast(DB.phaseLocks.grupos?"🔒 Votación cerrada":"🔓 Votación abierta");
+    };
+    $("adminResultsBtn").onclick=openAdminResults;
+  }
+}
+
+async function pick(g,pos,team){
+  if(isLocked()){toast("🔒 La votación está cerrada");return;}
+  if(!DB.votes[ME.name])DB.votes[ME.name]={grupos:{}};
+  const gv=DB.votes[ME.name].grupos[g]||{first:"",second:""};
+  const other=pos==="first"?"second":"first";
+  if(gv[pos]===team){gv[pos]="";}
+  else{gv[pos]=team;if(gv[other]===team)gv[other]="";}
+  DB.votes[ME.name].grupos[g]=gv;
+  await saveDB();
+  renderPicks();renderPeople();renderScore();renderStats();renderNavDots();
+  if(gv[pos]===team) toast(`${pos==="first"?"🥇":"🥈"} ${team} en Grupo ${g}`);
+  else toast("Quitado");
+}
+
+/* ══════════════════════════════════════════
+   ADMIN — RESULTADOS OFICIALES
+══════════════════════════════════════════ */
+function openAdminResults(){
+  const res=DB.results.grupos;
+  let h=`<div class="sectiontitle">📋 Resultados oficiales</div>
+    <div class="sectionsub">Marca quién quedó 1.º y 2.º en cada grupo</div>
+    <button class="btn btn-sm btn-ghost" id="backFromRes" style="margin-bottom:14px">← Volver</button>`;
+  GKEYS.forEach(g=>{
+    const gr=res[g]||{};
+    h+=`<div class="group"><div class="ghead"><span class="glabel">GRUPO ${g}</span></div>`;
+    GROUPS[g].forEach(([code,name])=>{
+      const f=gr.first===name,s=gr.second===name;
+      h+=`<div class="team">
+        <span class="flag-em">${flagEmoji(code)}</span>
+        <span class="tname">${name}</span>
+        <div class="picks">
+          <button class="pickbtn first ${f?"on":""}" data-rg="${g}" data-rp="first" data-rt="${name}">1º</button>
+          <button class="pickbtn second ${s?"on":""}" data-rg="${g}" data-rp="second" data-rt="${name}">2º</button>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  });
+  $("picksPanel").innerHTML=h;
+  $("backFromRes").onclick=renderPicks;
+  $("picksPanel").querySelectorAll(".pickbtn").forEach(b=>{
+    b.onclick=async()=>{
+      const g=b.dataset.rg,pos=b.dataset.rp,team=b.dataset.rt;
+      const gr=res[g]||{first:"",second:""};
+      const other=pos==="first"?"second":"first";
+      if(gr[pos]===team){gr[pos]="";}else{gr[pos]=team;if(gr[other]===team)gr[other]="";}
+      res[g]=gr;await saveDB();openAdminResults();renderScore();renderStats();
+      toast("Resultado actualizado ✅");
+    };
+  });
+}
+
+/* ══════════════════════════════════════════
+   PEOPLE PANEL
+══════════════════════════════════════════ */
+function renderPeople(){
+  const hasRes=GKEYS.some(g=>DB.results.grupos[g]&&(DB.results.grupos[g].first||DB.results.grupos[g].second));
+  let h=`<div class="sectiontitle">👥 Todos los jugadores</div>
+    <div class="sectionsub">${DB.players.length} participante${DB.players.length!==1?"s":""}</div>`;
+  const players=[...DB.players].sort((a,b)=>{
+    if(a.name===ME.name)return -1;if(b.name===ME.name)return 1;
+    return a.name.localeCompare(b.name);
+  });
+  players.forEach(p=>{
+    const v=(DB.votes[p.name]&&DB.votes[p.name].grupos)||{};
+    const done=completedCount(v), pts=scoreFor(p.name);
+    h+=`<div class="playercard">
+      <div class="phead" data-pl="${p.name}">
+        <div class="avatar">${p.name[0].toUpperCase()}</div>
+        <div class="pinfo">
+          <b>${escHtml(p.name)}${p.name===ME.name?' <span style="color:var(--gold);font-size:11px">(tú)</span>':""}</b>
+          <small>${done}/12 grupos${hasRes?` · ${pts} pts`:""}</small>
+        </div>
+        ${hasRes?`<div class="ptscore">${pts}</div>`:""}
+        <span class="caret">▼</span>
+      </div>
+      <div class="pbody" id="pb-${cssId(p.name)}">`;
+    GKEYS.forEach(g=>{
+      const gv=v[g]||{};
+      h+=`<div class="minigroup"><span class="gl">${g}</span>`;
+      if(gv.first){
+        const fc=teamCode(g,gv.first);
+        h+=`<span class="minipick"><span class="mini-em">🥇</span><span class="mini-em">${fc?flagEmoji(fc):""}</span>${escHtml(gv.first)}</span>`;
+      }
+      if(gv.second){
+        const sc=teamCode(g,gv.second);
+        h+=`<span class="minipick"><span class="mini-em">🥈</span><span class="mini-em">${sc?flagEmoji(sc):""}</span>${escHtml(gv.second)}</span>`;
+      }
+      if(!gv.first&&!gv.second) h+=`<span style="color:var(--txt2)">—</span>`;
+      h+=`</div>`;
+    });
+    h+=`</div></div>`;
+  });
+  $("peoplePanel").innerHTML=h;
+  $("peoplePanel").querySelectorAll(".phead").forEach(hd=>{
+    hd.onclick=()=>{
+      const body=$("pb-"+cssId(hd.dataset.pl));
+      body.classList.toggle("open");
+      hd.querySelector(".caret").classList.toggle("open");
+    };
+  });
+}
+function cssId(s){return s.replace(/[^a-zA-Z0-9]/g,"_");}
+function escHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+/* ══════════════════════════════════════════
+   SCORING
+  +1 clasifica top-2 (posición incorrecta)
+  +2 posición exacta
+  máx 48 pts
+══════════════════════════════════════════ */
+function scoreFor(name){return scoreDetails(name).total;}
+function scoreDetails(name){
+  const v=(DB.votes[name]&&DB.votes[name].grupos)||{};
+  const res=DB.results.grupos;
+  let total=0;
+  const groups={};
+  GKEYS.forEach(g=>{
+    const gv=v[g]||{first:"",second:""};
+    const gr=res[g]||{first:"",second:""};
+    const hasResult=!!(gr.first||gr.second);
+    const official=[gr.first,gr.second].filter(Boolean);
+    let pts=0;
+    let pickFirst={name:gv.first,status:"pending",pts:0};
+    let pickSecond={name:gv.second,status:"pending",pts:0};
+    if(hasResult){
+      // pick de 1.º
+      if(gv.first){
+        if(gr.first===gv.first){pickFirst.status="exact";pickFirst.pts=2;pts+=2;}
+        else if(official.includes(gv.first)){pickFirst.status="partial";pickFirst.pts=1;pts+=1;}
+        else{pickFirst.status="miss";pickFirst.pts=0;}
+      }else{pickFirst.status="nopick";}
+      // pick de 2.º
+      if(gv.second){
+        if(gr.second===gv.second){pickSecond.status="exact";pickSecond.pts=2;pts+=2;}
+        else if(official.includes(gv.second)){pickSecond.status="partial";pickSecond.pts=1;pts+=1;}
+        else{pickSecond.status="miss";pickSecond.pts=0;}
+      }else{pickSecond.status="nopick";}
+    }
+    total+=pts;
+    groups[g]={pts,hasResult,pickFirst,pickSecond,gr};
+  });
+  return{total:Math.min(total,48),groups};
+}
+
+/* ══════════════════════════════════════════
+   SCORE PANEL — Ranking + Desglose personal
+══════════════════════════════════════════ */
+function renderScore(){
+  const groupsWithResult=GKEYS.filter(g=>DB.results.grupos[g]&&(DB.results.grupos[g].first||DB.results.grupos[g].second));
+  const hasRes=groupsWithResult.length>0;
+  const ranking=DB.players.map(p=>({name:p.name,pts:scoreFor(p.name)}))
+    .sort((a,b)=>b.pts-a.pts||a.name.localeCompare(b.name));
+  const max=Math.max(...ranking.map(r=>r.pts),1);
+
+  let h=`<div class="sectiontitle">🏆 Marcador</div>`;
+
+  // Header de progreso
+  h+=`<div class="score-header">
+    <div class="prog-text"><b>${groupsWithResult.length} / 12</b>grupos con resultado</div>
+    <div class="prog-text" style="text-align:right"><b>${hasRes?ranking.find(r=>r.name===ME.name)?.pts||0:"-"} pts</b>tu posición: ${hasRes?ranking.findIndex(r=>r.name===ME.name)+1+"°":"—"}</div>
+  </div>`;
+
+  if(!hasRes){
+    h+=`<div class="rulecard"><p style="text-align:center;color:var(--txt2)">⏳ El admin aún no ha ingresado resultados.<br><br><b>Sistema de puntos:</b><br>+1 clasifica top-2 · +2 posición exacta · máx <b>48 pts</b></p></div>`;
+    // Ranking base (igual aparece para ver picks completados)
+    if(DB.players.length>0){
+      h+=`<div class="sectionsub" style="margin-top:8px">Grupos completados</div>`;
+      DB.players.map(p=>({name:p.name,done:completedCount((DB.votes[p.name]&&DB.votes[p.name].grupos)||{})}))
+        .sort((a,b)=>b.done-a.done||a.name.localeCompare(b.name))
+        .forEach((r,i)=>{
+          h+=`<div class="rankrow ${r.name===ME.name?"me":""}">
+            <span class="pos">${i+1}</span>
+            <span class="nm">${escHtml(r.name)}${r.name===ME.name?' <span style="color:var(--gold);font-size:11px">(tú)</span>':""}</span>
+            <span class="barwrap"><span class="bar" style="width:${r.done/12*100}%"></span></span>
+            <span class="pt" style="font-size:13px;color:var(--txt2)">${r.done}/12</span>
+          </div>`;
+        });
+    }
+    $("scorePanel").innerHTML=h; return;
+  }
+
+  // Podio top 3
+  const top=ranking.slice(0,3);
+  if(top.length>=1){
+    h+=`<div class="podium">`;
+    const order=top.length>=3?[1,0,2]:top.length===2?[1,0]:[0];
+    order.forEach(i=>{
+      if(!top[i])return;
+      const medal=["🥇","🥈","🥉"][i];
+      const cls=["p1","p2","p3"][i];
+      h+=`<div class="pod ${cls}"><div class="medal">${medal}</div><div class="nm">${escHtml(top[i].name)}</div><div class="pts">${top[i].pts}</div></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  // Ranking completo
+  ranking.forEach((r,i)=>{
+    h+=`<div class="rankrow ${r.name===ME.name?"me":""}">
+      <span class="pos">${i+1}</span>
+      <span class="nm">${escHtml(r.name)}${r.name===ME.name?' <span style="color:var(--gold);font-size:11px">(tú)</span>':""}</span>
+      <span class="barwrap"><span class="bar" style="width:${r.pts/max*100}%"></span></span>
+      <span class="pt">${r.pts}</span>
+    </div>`;
+  });
+
+  // Desglose personal (mis grupos)
+  const det=scoreDetails(ME.name);
+  h+=`<div class="breakdown">
+    <h4>Tu desglose <span>${det.total} pts acumulados</span></h4>
+    <div class="bkgrid">`;
+
+  // Clasificar celdas
+  GKEYS.forEach(g=>{
+    const gd=det.groups[g];
+    let cls="pending", ptsLabel="⏳";
+    if(gd.hasResult){
+      if(gd.pts===4) cls="exact";
+      else if(gd.pts>=1) cls="partial";
+      else cls="miss";
+      ptsLabel=`+${gd.pts}`;
+    }
+    h+=`<div class="bkcell ${cls}" data-bkg="${g}" title="Grupo ${g}">
+      <div class="gl">${g}</div>
+      <div class="bkpts">${ptsLabel}</div>
+    </div>`;
+  });
+  h+=`</div><div class="bkdetail" id="bkdetail"></div></div>`;
+
+  $("scorePanel").innerHTML=h;
+
+  // Mostrar detalle por defecto del primer grupo con resultado
+  const firstWithRes=GKEYS.find(g=>det.groups[g].hasResult);
+  if(firstWithRes) renderBkDetail(firstWithRes, det);
+
+  $("scorePanel").querySelectorAll(".bkcell").forEach(cell=>{
+    cell.onclick=()=>{
+      $("scorePanel").querySelectorAll(".bkcell").forEach(c=>c.style.outline="");
+      cell.style.outline="2px solid var(--accent)";
+      renderBkDetail(cell.dataset.bkg, det);
+    };
+  });
+}
+
+function renderBkDetail(g, det){
+  const el=$("bkdetail"); if(!el)return;
+  const gd=det.groups[g];
+  const statusIcon={exact:"✅",partial:"🟡",miss:"❌",nopick:"➖",pending:"⏳"};
+  const statusColor={exact:"pts-exact",partial:"pts-partial",miss:"pts-miss",nopick:"pts-pending",pending:"pts-pending"};
+
+  const firstCode=gd.pickFirst.name?teamCode(g,gd.pickFirst.name):"";
+  const secondCode=gd.pickSecond.name?teamCode(g,gd.pickSecond.name):"";
+  const resFirstCode=gd.gr.first?teamCode(g,gd.gr.first):"";
+  const resSecondCode=gd.gr.second?teamCode(g,gd.gr.second):"";
+
+  let h=`<div class="bkrow">
+    <span class="bglabel">G.${g}</span>
+    <div class="picks-detail">
+      <div class="pick-item">
+        <span class="pick-ico">🥇 Mi pick:</span>
+        <span>${gd.pickFirst.name?`${firstCode?flagEmoji(firstCode):""} ${escHtml(gd.pickFirst.name)}`:"—"}</span>
+        <span>${statusIcon[gd.pickFirst.status]}</span>
+      </div>
+      <div class="pick-item">
+        <span class="pick-ico">🥈 Mi pick:</span>
+        <span>${gd.pickSecond.name?`${secondCode?flagEmoji(secondCode):""} ${escHtml(gd.pickSecond.name)}`:"—"}</span>
+        <span>${statusIcon[gd.pickSecond.status]}</span>
+      </div>`;
+  if(gd.hasResult){
+    h+=`<div class="pick-item" style="width:100%;margin-top:4px;padding-top:6px;border-top:1px solid var(--line)">
+      <span class="pick-ico" style="color:var(--txt2)">Oficial:</span>
+      <span>${resFirstCode?flagEmoji(resFirstCode):""} ${escHtml(gd.gr.first||"—")}</span>
+      <span style="color:var(--txt2)">·</span>
+      <span>${resSecondCode?flagEmoji(resSecondCode):""} ${escHtml(gd.gr.second||"—")}</span>
+    </div>`;
+  }
+  h+=`</div>
+    <span class="result-pts ${statusColor[gd.hasResult?(gd.pts>0?(gd.pts>=4?"exact":"partial"):"miss"):"pending"]}">${gd.hasResult?`+${gd.pts}`:"⏳"}</span>
+  </div>`;
+  el.innerHTML=h;
+}
+
+/* ══════════════════════════════════════════
+   STATS PANEL — ranking global de los 48 países
+══════════════════════════════════════════ */
+function renderStats(){
+  const total=DB.players.length;
+  let h=`<div class="sectiontitle">📊 Stats</div>
+    <div class="sectionsub">Los 48 países ordenados por popularidad · ${total} jugador${total!==1?"es":""}</div>
+    <div class="statlegend">
+      <span><i style="background:linear-gradient(90deg,var(--gold),var(--gold2))"></i>Como 1.º</span>
+      <span><i style="background:linear-gradient(90deg,var(--silver2),var(--silver))"></i>Como 2.º</span>
+    </div>`;
+
+  if(total===0){h+=`<p class="muted">Aún no hay jugadores.</p>`;$("statsPanel").innerHTML=h;return;}
+
+  // Construir stats globales por país
+  const all=[];
+  GKEYS.forEach(g=>{
+    GROUPS[g].forEach(([code,name])=>{
+      let first=0,second=0;
+      DB.players.forEach(p=>{
+        const gv=(DB.votes[p.name]&&DB.votes[p.name].grupos&&DB.votes[p.name].grupos[g])||{};
+        if(gv.first===name)first++;
+        if(gv.second===name)second++;
+      });
+      all.push({code,name,group:g,first,second,total:first+second});
+    });
+  });
+  // Ordenar: mayor total primero, luego por 1.º, luego nombre
+  all.sort((a,b)=>b.total-a.total||b.first-a.first||a.name.localeCompare(b.name));
+
+  h+=`<div class="statcard"><h4>🌍 Ranking de países más elegidos</h4>`;
+  all.forEach(c=>{
+    const pct=Math.round(c.total/total*100);
+    const w1=total?c.first/total*100:0;
+    const w2=total?c.second/total*100:0;
+    h+=`<div class="statrow">
+      <div class="tl">
+        <span class="stat-em">${flagEmoji(c.code)}</span>
+        ${escHtml(c.name)}
+        <span class="group-tag">G.${c.group}</span>
+        <span class="pct">${c.total} picks (${pct}%)</span>
+      </div>
+      <div class="sbar">
+        <div class="seg1" style="width:${w1}%"></div>
+        <div class="seg2" style="width:${w2}%"></div>
+      </div>
+    </div>`;
+  });
+  h+=`</div>`;
+  $("statsPanel").innerHTML=h;
+}
+
+/* ══════════════════════════════════════════
+   RULES PANEL
+══════════════════════════════════════════ */
+function renderRules(){
+  $("rulesPanel").innerHTML=`
+    <div class="sectiontitle">📖 Reglas</div>
+    <div class="sectionsub">Quiniela fase de grupos · Mundial 2026</div>
+    <div class="rulecard">
+      <h4>🎯 Cómo jugar</h4>
+      <p>Pronostica quién terminará <b>1.º</b> (🥇) y <b>2.º</b> (🥈) en cada uno de los <b>12 grupos</b> (A–L). En total son 24 selecciones.</p>
+      <ul>
+        <li>Toca <b>1º</b> o <b>2º</b> junto a cada equipo.</li>
+        <li>Un equipo no puede ser 1.º y 2.º a la vez.</li>
+        <li>Tus picks se guardan automáticamente en la nube.</li>
+      </ul>
+    </div>
+    <div class="rulecard">
+      <h4>🧮 Puntos</h4>
+      <div class="ptbox">
+        <div class="pb"><div class="n">+1</div><small>Clasifica top-2 pero posición incorrecta</small></div>
+        <div class="pb"><div class="n">+2</div><small>Posición exacta (1.º o 2.º correcto)</small></div>
+        <div class="pb"><div class="n">48</div><small>Máximo posible (24 exactos × 2)</small></div>
+      </div>
+    </div>
+    <div class="rulecard">
+      <h4>🔒 Cierre</h4>
+      <p>El admin cierra la votación antes de que arranque el torneo. Después solo cambia el marcador conforme se cargan los resultados oficiales grupo por grupo.</p>
+    </div>
+    <div class="rulecard" id="adminGate">
+      <h4>🛠️ Modo administrador</h4>
+      ${ME&&ME.isAdmin
+        ?`<p style="color:var(--green)">✅ Estás en modo admin. Ve a 🗳️ Picks para gestionar la votación y resultados.</p>`
+        :`<p>Si eres el organizador, ingresa la contraseña de admin:</p>
+          <input id="adminPass" type="password" placeholder="Contraseña admin" style="margin-top:10px">
+          <button class="btn btn-gold btn-sm" id="adminLogin" style="margin-top:10px">Activar modo admin</button>
+          <div class="err" id="adminErr"></div>`}
+    </div>
+    <p class="muted" style="margin-bottom:8px">${usingLocal?"⚠️ Modo local: el servidor no responde, datos guardados en este dispositivo.":"☁️ Sincronizado con la nube"}</p>`;
+
+  if(ME&&!ME.isAdmin){
+    const btn=$("adminLogin");
+    if(btn) btn.onclick=()=>{
+      if($("adminPass").value===ADMIN_PASS){
+        ME.isAdmin=true;toast("🛠️ Modo admin activado");
+        renderPicks();renderRules();switchTab("picks");
+      }else{$("adminErr").textContent="Contraseña incorrecta.";}
+    };
+  }
+}
+
+/* ══════════════════════════════════════════
+   NOTIFY + NAV DOTS
+══════════════════════════════════════════ */
+function voteSignature(){
+  let s="";
+  DB.players.forEach(p=>{
+    if(p.name===ME.name)return;
+    const v=(DB.votes[p.name]&&DB.votes[p.name].grupos)||{};
+    s+=p.name+":"+completedCount(v)+"|";
+  });
+  return s;
+}
+function renderNotify(){
+  const host=$("notifyHost");
+  const newVotes=voteSignature()!==lastSeenVoteSig;
+  if(!newVotes||activeTab==="people"){host.innerHTML="";return;}
+  host.innerHTML=`<div class="notify">🗳️ Hay picks actualizados de otros jugadores
+    <span class="x" id="dismissNotify">✕</span></div>`;
+  $("dismissNotify").onclick=()=>{lastSeenVoteSig=voteSignature();host.innerHTML="";renderNavDots();};
+}
+function renderNavDots(){
+  const newVotes=voteSignature()!==lastSeenVoteSig;
+  document.querySelectorAll(".navbtn").forEach(b=>{
+    const old=b.querySelector(".ndot");if(old)old.remove();
+    if(b.dataset.tab==="people"&&newVotes&&activeTab!=="people"){
+      const d=document.createElement("span");d.className="ndot";b.appendChild(d);
+    }
+  });
+}
+
+/* ══════════════════════════════════════════
+   SYNC / POLLING
+══════════════════════════════════════════ */
+$("syncBtn").onclick=async()=>{
+  $("syncBtn").innerHTML='<span class="spin">🔄</span>';
+  await syncNow(true);
+  $("syncBtn").innerHTML="🔄";
+};
+async function syncNow(manual){
+  await saveQueue.catch(()=>{});
+  const fresh=await loadDB();
+  mergeRemote(fresh);renderAll();
+  if(manual)toast(usingLocal?"⚠️ Sin conexión (local)":"✅ Sincronizado");
+}
+function mergeRemote(fresh){
+  DB=fresh;
+  if(!DB.players.find(p=>p.name===ME.name)){
+    try{
+      const local=JSON.parse(localStorage.getItem(LS_KEY)||"{}");
+      const me=(local.players||[]).find(p=>p.name===ME.name);
+      if(me)DB.players.push(me);
+    }catch(_){}
+  }
+  if(!DB.votes[ME.name])DB.votes[ME.name]={grupos:{}};
+}
+function startPolling(){
+  clearInterval(polling);
+  polling=setInterval(async()=>{
+    await saveQueue.catch(()=>{});
+    mergeRemote(await loadDB());renderAll();
+  },POLL_MS);
+}
+
+/* ══════════════════════════════════════════
+   BOOT
+══════════════════════════════════════════ */
+bootAuth();
+</script>
+</body>
+</html>
