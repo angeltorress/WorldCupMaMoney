@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Quiniela Mundial 2026 ⚽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e1a;--bg2:#111729;--panel:#161d33;--panel2:#1d2742;--line:#28324f;
+  --txt:#eaf0ff;--txt2:#8b97b8;--gold:#f5c542;--gold2:#c99a1e;
+  --silver:#c8d2e8;--silver2:#8c98b4;--green:#22c55e;--green2:#15803d;
+  --red:#ef4444;--accent:#3b82f6;--r:16px;--r2:12px;
+  --shadow:0 8px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%,rgba(59,130,246,.10),transparent 60%),
+    radial-gradient(900px 500px at -10% 20%,rgba(245,197,66,.07),transparent 55%),
+    var(--bg);
+  color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:78px;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.hide{display:none!important}
+
+/* ── SCREENS ── */
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:28px}
+.brand{text-align:center;margin-bottom:22px}
+.brand .ball{font-size:46px;line-height:1}
+.brand h1{font-size:26px;margin-top:8px;font-family:'Archivo Black';background:linear-gradient(90deg,var(--gold),#fff 60%,var(--silver));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand p{color:var(--txt2);font-size:13px;margin-top:4px;font-weight:500}
+label{display:block;font-size:12px;font-weight:600;color:var(--txt2);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.06em}
+input{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:14px 16px;color:var(--txt);font-size:16px;font-weight:500;transition:.15s}
+input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+.pin-input{letter-spacing:.6em;text-align:center;font-size:22px;font-weight:700}
+.btn{width:100%;padding:15px;border-radius:var(--r2);font-weight:700;font-size:15px;background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;margin-top:18px;transition:.15s;box-shadow:0 6px 18px rgba(59,130,246,.35)}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn-ghost{background:var(--panel2);box-shadow:none;border:1px solid var(--line);color:var(--txt)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#3a2c00;box-shadow:0 6px 18px rgba(245,197,66,.3)}
+.btn-sm{width:auto;padding:9px 14px;font-size:13px;margin-top:0}
+.muted{color:var(--txt2);font-size:12.5px;text-align:center;margin-top:16px;line-height:1.5}
+.err{color:var(--red);font-size:13px;font-weight:600;text-align:center;margin-top:12px;min-height:18px}
+.linkbtn{color:var(--accent);font-weight:700;background:none;font-size:13px;text-decoration:underline}
+
+/* ── TOPBAR ── */
+#app{max-width:680px;margin:0 auto;padding:0 0 12px}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(10,14,26,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.topbar .logo{font-family:'Archivo Black';font-size:17px;display:flex;align-items:center;gap:7px}
+.topbar .spacer{flex:1}
+.chip{font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;gap:6px}
+.chip.me{background:linear-gradient(135deg,rgba(245,197,66,.18),rgba(59,130,246,.18));border-color:var(--gold2)}
+.iconbtn{width:38px;height:38px;border-radius:10px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:17px}
+
+/* ── NOTIFY ── */
+.notify{margin:10px 16px 0;padding:11px 14px;border-radius:var(--r2);background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(34,197,94,.12));border:1px solid var(--accent);font-size:13px;font-weight:600;display:flex;align-items:center;gap:9px;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.notify .x{margin-left:auto;font-size:18px;color:var(--txt2);padding:0 4px}
+
+/* ── PANELS ── */
+.panel{padding:14px 16px;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sectiontitle{font-family:'Archivo Black';font-size:20px;margin:4px 0 2px}
+.sectionsub{color:var(--txt2);font-size:13px;margin-bottom:14px}
+
+/* ── PROGRESS ── */
+.progwrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:16px}
+.progtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.progtop b{font-family:'Archivo Black';font-size:22px}
+.progtop span{color:var(--txt2);font-size:13px;font-weight:600}
+.progbar{height:8px;background:var(--bg2);border-radius:999px;overflow:hidden;margin-bottom:14px}
+.progfill{height:100%;background:linear-gradient(90deg,var(--gold),var(--green));border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.gdots{display:flex;flex-wrap:wrap;gap:8px}
+.gdot{width:34px;height:34px;border-radius:10px;background:var(--bg2);border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--txt2);display:flex;align-items:center;justify-content:center;transition:.18s}
+.gdot.done{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(34,197,94,.35)}
+.gdot.active{outline:2px solid var(--accent);outline-offset:2px}
+.complete-banner{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-radius:var(--r);padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(34,197,94,.4);animation:pop .4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{0%{transform:scale(.8);opacity:0}100%{transform:scale(1);opacity:1}}
+.complete-banner .big{font-size:30px}
+.complete-banner b{display:block;font-family:'Archivo Black';font-size:16px}
+.complete-banner small{opacity:.92;font-size:12.5px;font-weight:500}
+.lockbanner{background:rgba(239,68,68,.12);border:1px solid var(--red);color:#ffb4b4;border-radius:var(--r2);padding:12px 14px;font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+/* ── GROUP CARD ── */
+.group{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:14px;overflow:hidden}
+.ghead{padding:13px 16px;display:flex;align-items:center;gap:10px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.glabel{font-family:'Archivo Black';font-size:15px;background:linear-gradient(135deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gstatus{margin-left:auto;font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px}
+.gstatus.ok{background:rgba(34,197,94,.18);color:#7ee9a4}
+.gstatus.pend{background:rgba(139,151,184,.15);color:var(--txt2)}
+.team{display:flex;align-items:center;gap:11px;padding:11px 16px;border-bottom:1px solid var(--line)}
+.team:last-child{border-bottom:none}
+.flag-em{font-size:26px;line-height:1;width:34px;text-align:center;flex-shrink:0}
+.tname{font-weight:600;font-size:14.5px;flex:1;line-height:1.2}
+.picks{display:flex;gap:6px}
+.pickbtn{width:38px;height:38px;border-radius:10px;font-weight:800;font-size:13px;background:var(--bg2);border:1.5px solid var(--line);color:var(--txt2);transition:.15s;display:flex;align-items:center;justify-content:center}
+.pickbtn:active{transform:scale(.9)}
+.pickbtn.first.on{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#3a2c00;border-color:var(--gold);box-shadow:0 3px 12px rgba(245,197,66,.4)}
+.pickbtn.second.on{background:linear-gradient(135deg,var(--silver),var(--silver2));color:#1a2238;border-color:var(--silver);box-shadow:0 3px 12px rgba(200,210,232,.3)}
+.pickbtn.disabled{opacity:.4;pointer-events:none}
+.team.res-correct{background:rgba(34,197,94,.07)}
+.resbadge{font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px;margin-left:2px}
+.resbadge.gold{background:var(--gold);color:#3a2c00}
+.resbadge.silver{background:var(--silver);color:#1a2238}
+
+/* ── PEOPLE ── */
+.playercard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.phead{padding:13px 16px;display:flex;align-items:center;gap:11px;cursor:pointer}
+.avatar{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.pinfo b{font-size:15px;display:block}
+.pinfo small{color:var(--txt2);font-size:12px;font-weight:500}
+.ptscore{font-family:'Archivo Black';font-size:20px;color:var(--gold)}
+.caret{color:var(--txt2);font-size:13px;transition:.2s}
+.caret.open{transform:rotate(180deg)}
+.pbody{padding:0 16px 14px;display:none}
+.pbody.open{display:block}
+.minigroup{font-size:13px;padding:7px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.minigroup .gl{font-weight:800;color:var(--txt2);width:22px}
+.minipick{display:flex;align-items:center;gap:4px;font-size:13px}
+.mini-em{font-size:18px;line-height:1}
+
+/* ── SCOREBOARD ── */
+.podium{display:flex;gap:8px;align-items:flex-end;margin-bottom:18px}
+.pod{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 8px;text-align:center}
+.pod .medal{font-size:26px}
+.pod .nm{font-weight:700;font-size:13px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pod .pts{font-family:'Archivo Black';font-size:18px;margin-top:3px}
+.pod.p1{background:linear-gradient(135deg,rgba(245,197,66,.2),var(--panel));border-color:var(--gold2);transform:translateY(-6px)}
+.pod.p1 .pts{color:var(--gold)}
+.pod.p2 .pts{color:var(--silver)}
+.pod.p3 .pts{color:#cd7f32}
+.rankrow{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r2);margin-bottom:8px}
+.rankrow .pos{font-family:'Archivo Black';font-size:16px;color:var(--txt2);width:26px;text-align:center}
+.rankrow .nm{flex:1;font-weight:600;font-size:14px}
+.rankrow .barwrap{flex:2;height:7px;background:var(--bg2);border-radius:999px;overflow:hidden;max-width:100px}
+.rankrow .bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:999px;transition:width .4s}
+.rankrow .pt{font-family:'Archivo Black';font-size:16px;color:var(--gold);width:38px;text-align:right}
+.rankrow.me{border-color:var(--gold2);background:linear-gradient(135deg,rgba(245,197,66,.1),var(--panel))}
+
+/* ── BREAKDOWN ── */
+.breakdown{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.breakdown h4{font-family:'Archivo Black';font-size:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.breakdown h4 span{font-family:'Outfit';font-size:13px;color:var(--txt2);font-weight:600}
+.bkgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:14px}
+.bkcell{border-radius:10px;padding:8px 4px;text-align:center;cursor:pointer;transition:.15s;border:1.5px solid transparent}
+.bkcell .gl{font-family:'Archivo Black';font-size:13px}
+.bkcell .bkpts{font-size:11px;font-weight:700;margin-top:2px}
+.bkcell.pending{background:var(--bg2);border-color:var(--line);color:var(--txt2)}
+.bkcell.exact{background:rgba(34,197,94,.18);border-color:var(--green2);color:#7ee9a4}
+.bkcell.partial{background:rgba(245,197,66,.15);border-color:var(--gold2);color:var(--gold)}
+.bkcell.miss{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.4);color:#ffb4b4}
+.bkcell.nopick{background:var(--bg2);border-color:var(--line);color:var(--txt2);opacity:.5}
+.bkdetail{display:flex;flex-direction:column;gap:6px}
+.bkrow{background:var(--bg2);border-radius:var(--r2);padding:10px 13px;font-size:13px;display:flex;align-items:center;gap:8px}
+.bkrow .bglabel{font-family:'Archivo Black';font-size:12px;color:var(--txt2);width:24px}
+.bkrow .picks-detail{flex:1;display:flex;flex-wrap:wrap;gap:8px}
+.bkrow .pick-item{display:flex;align-items:center;gap:4px}
+.bkrow .pick-ico{font-size:12px}
+.bkrow .result-pts{font-family:'Archivo Black';font-size:14px;margin-left:auto}
+.pts-exact{color:var(--green)}
+.pts-partial{color:var(--gold)}
+.pts-miss{color:var(--txt2)}
+.pts-pending{color:var(--txt2)}
+.score-header{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.score-header .prog-text{font-size:13px;color:var(--txt2);font-weight:600}
+.score-header .prog-text b{color:var(--txt);display:block;font-size:15px}
+
+/* ── STATS ── */
+.statcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.statcard h4{font-family:'Archivo Black';font-size:14px;margin-bottom:12px;color:var(--gold)}
+.statrow{margin-bottom:10px}
+.statrow:last-child{margin-bottom:0}
+.statrow .tl{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;margin-bottom:5px}
+.statrow .tl .group-tag{font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px;background:var(--bg2);color:var(--txt2);margin-left:2px}
+.statrow .tl .pct{margin-left:auto;color:var(--txt2);font-weight:700;font-size:12px;white-space:nowrap}
+.sbar{height:18px;background:var(--bg2);border-radius:7px;overflow:hidden;display:flex}
+.sbar .seg1{background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .5s}
+.sbar .seg2{background:linear-gradient(90deg,var(--silver2),var(--silver));transition:width .5s}
+.statlegend{display:flex;gap:16px;font-size:11px;color:var(--txt2);font-weight:600;margin-bottom:14px}
+.statlegend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:4px;vertical-align:-1px}
+.stat-em{font-size:20px;line-height:1}
+
+/* ── RULES ── */
+.rulecard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px}
+.rulecard h4{font-family:'Archivo Black';font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.rulecard p,.rulecard li{font-size:14px;line-height:1.65;color:#c3cce6}
+.rulecard ul{padding-left:20px;margin-top:6px}
+.rulecard li{margin-bottom:5px}
+.ptbox{display:flex;gap:10px;margin-top:10px}
+.ptbox .pb{flex:1;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r2);padding:12px;text-align:center}
+.ptbox .pb .n{font-family:'Archivo Black';font-size:24px;color:var(--gold)}
+.ptbox .pb small{font-size:11px;color:var(--txt2);font-weight:600}
+
+/* ── ADMIN ── */
+.adminbox{background:rgba(239,68,68,.06);border:1px solid var(--red);border-radius:var(--r);padding:14px 16px;margin-bottom:16px}
+.adminbox h4{font-size:13px;color:#ff9b9b;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.adminrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.toggle{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600}
+.switch{width:48px;height:27px;background:var(--bg2);border-radius:999px;border:1px solid var(--line);position:relative;transition:.2s;flex-shrink:0;cursor:pointer}
+.switch.on{background:var(--green)}
+.switch::after{content:"";position:absolute;width:21px;height:21px;border-radius:50%;background:#fff;top:2px;left:2px;transition:.2s}
+.switch.on::after{left:24px}
+
+/* ── NAV ── */
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(10,14,26,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;padding:6px 4px 8px;max-width:680px;margin:0 auto}
+.navbtn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;color:var(--txt2);font-size:9.5px;font-weight:700;position:relative;transition:.15s}
+.navbtn .ic{font-size:21px;line-height:1}
+.navbtn.on{color:var(--gold)}
+.navbtn.on .ic{filter:drop-shadow(0 2px 6px rgba(245,197,66,.5))}
+.navbtn .ndot{position:absolute;top:2px;right:50%;margin-right:-18px;width:8px;height:8px;background:var(--red);border-radius:50%;border:2px solid var(--bg)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(20px);z-index:100;opacity:0;transition:.25s;pointer-events:none;width:max-content;max-width:90vw}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toastinner{background:var(--panel2);border:1px solid var(--gold2);border-radius:999px;padding:11px 20px;font-size:13.5px;font-weight:700;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px}
+.spin{display:inline-block;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+</style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="authScreen" class="screen">
+  <div class="card">
+    <div class="brand"><div class="ball">⚽</div><h1>QUINIELA 2026</h1><p>Mundial USA · Canadá · México</p></div>
+    <label>Tu nombre</label>
+    <input id="authName" type="text" placeholder="Ej. Carlos" maxlength="20" autocomplete="off">
+    <label>PIN de 4 dígitos</label>
+    <input id="authPin" class="pin-input" type="tel" inputmode="numeric" maxlength="4" placeholder="••••">
+    <button class="btn" id="authBtn">Entrar / Registrarme</button>
+    <div class="err" id="authErr"></div>
+    <p class="muted">Si tu nombre ya existe usa tu PIN. Si es nuevo queda registrado al instante.</p>
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div id="app" class="hide">
+  <div class="topbar">
+    <div class="logo">⚽ 2026</div>
+    <div class="spacer"></div>
+    <div class="chip me">👤 <span id="meName">—</span></div>
+    <button class="iconbtn" id="syncBtn" title="Sincronizar">🔄</button>
+  </div>
+  <div id="notifyHost"></div>
+  <div class="panel" id="picksPanel"></div>
+  <div class="panel hide" id="peoplePanel"></div>
+  <div class="panel hide" id="scorePanel"></div>
+  <div class="panel hide" id="statsPanel"></div>
+  <div class="panel hide" id="rulesPanel"></div>
+</div>
+
+<div class="nav hide" id="nav">
+  <button class="navbtn on" data-tab="picks"><span class="ic">🗳️</span>Picks</button>
+  <button class="navbtn" data-tab="people"><span class="ic">👥</span>Todos</button>
+  <button class="navbtn" data-tab="score"><span class="ic">🏆</span>Marcador</button>
+  <button class="navbtn" data-tab="stats"><span class="ic">📊</span>Stats</button>
+  <button class="navbtn" data-tab="rules"><span class="ic">📖</span>Reglas</button>
+</div>
+
+<div id="toast"><div class="toastinner" id="toastInner"></div></div>
+
+<script>
+/* ══════════════════════════════════════════
+   CONFIG — BIN ÚNICO Y FIJO. NUNCA crear bins nuevos.
+══════════════════════════════════════════ */
+const BIN_ID     = "6a20a961da38895dfe837022";
+const ACCESS_KEY = "$2a$10$3MvdvzzkcghvRe/oQIZ8juVHQQhhdRCE0isOnZweBe5/EOKYaJV4C";
+const BIN_URL    = "https://api.jsonbin.io/v3/b/" + BIN_ID;
+const ADMIN_PASS = "admin2026";
+const LS_KEY     = "quiniela2026_db";
+const SS_USER    = "quiniela2026_user";
+const POLL_MS    = 30000;
+
+/* ══════════════════════════════════════════
+   GRUPOS OFICIALES MUNDIAL 2026
+══════════════════════════════════════════ */
+const GROUPS = {
+  A:[["mx","México"],      ["za","Sudáfrica"],       ["kr","Corea del Sur"], ["cz","Chequia"]],
+  B:[["ca","Canadá"],      ["ba","Bosnia y Herz."],  
